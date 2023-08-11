@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: vote
+spec:
+  type: ClusterIp
+  ports:
+  - port: 6370
+    targetPort: 6379
+  selector:
+    matchLabels:
+      name: redis-deployment
+      app: demo-voting-app
